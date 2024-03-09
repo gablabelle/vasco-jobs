@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { normalizeMonthlyTargets } from "./targets-normalizer";
 import { useMonthyTargets } from "../../client";
 import { TargetsTable } from "./targets-table";
-import { updateQuarterlyTargets } from "./targets-rules";
 
 export function Targets() {
   // Fetching data from server
@@ -11,10 +10,7 @@ export function Targets() {
   // Memoize results from normalization function
   const normalizedMonthlyTargets = useMemo(() => {
     if (monthlyTargets) {
-      return updateQuarterlyTargets(
-        normalizeMonthlyTargets(monthlyTargets),
-        true
-      );
+      return normalizeMonthlyTargets(monthlyTargets);
     }
     return null;
   }, [monthlyTargets]);

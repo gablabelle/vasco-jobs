@@ -87,15 +87,7 @@ function updateMapFromNewEndingMRR(
     nextIndex
   );
 
-  // If next month is is quarterly, skip.
-  if (nextMonthBeginningMRRCell.periodType === PeriodType.Quarterly) {
-    nextIndex++;
-    nextMonthBeginningMRRCell = getCellFromMap(
-      newTargetsMap,
-      "beginningMRR",
-      nextIndex
-    );
-  }
+  console.log({ nextMonthBeginningMRRCell });
 
   if (nextMonthBeginningMRRCell) {
     // Is there a next month?
@@ -405,13 +397,11 @@ export function updateMonthlyTargetsMap(
 
   // If newBusinessMRR was edited update accordingly
   if (rowId === "newBusinessMRR") {
-    const updatedMonthlyMap = updateMapFromNewBunisessMRR(
+    const updatedMap = updateMapFromNewBunisessMRR(
       monthlyTargets,
       monthIndex,
       Number(value)
     );
-
-    const updatedMap = updateQuarterlyTargets(updatedMonthlyMap);
 
     callbackFn(updatedMap);
   }
