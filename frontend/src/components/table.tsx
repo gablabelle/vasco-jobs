@@ -225,7 +225,6 @@ export function VascoTdInput({
     if (onChange && rowId && cellIndex && value) {
       if (valueType === ValueType.Currency) {
         const cleanValue = value.replace(/[^0-9.-]+/g, "");
-        console.log({ cleanValue });
         if (cleanValue === "") {
           setValue(currency.format(0));
           onChange(rowId, cellIndex, "0");
